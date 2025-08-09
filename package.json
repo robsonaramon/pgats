@@ -2,22 +2,23 @@
   "name": "pgats",
   "version": "1.0.0",
   "description": "Esta API permite o registro, login, consulta de usuários, adição de favorecidos e transferências de valores entre usuários. O objetivo é servir de base para estudos de testes e automação de APIs.",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js"
+  "start": "node server.js",
+  "test": "mocha --recursive --exit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "express": "^4.18.2",
-    "swagger-ui-express": "^4.6.3"
+    "bcryptjs": "^3.0.2",
+    "express": "^5.1.0",
+  "swagger-ui-express": "^4.6.3"
   },
   "devDependencies": {
     "chai": "^4.4.1",
     "mocha": "^10.2.0",
-    "supertest": "^7.1.4",
+    "supertest": "^6.3.3",
     "sinon": "^17.0.1"
   }
 }
