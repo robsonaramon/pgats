@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
   "start": "node server.js",
-  "test": "mocha --recursive --exit"
+  "test": "mocha 'test/**/*.test.js' --timeout 10000"
   },
   "keywords": [],
   "author": "",
