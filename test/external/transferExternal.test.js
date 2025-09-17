@@ -6,17 +6,49 @@ const transferService = require('../../service/transferService');
 
 describe('Transfer Controller', ()=> {
     describe('POST /transfer', ()=> {
-        it ('Retornar o código 400 quando o remetente e destinatário são inexistentes', async ()=> {
+
+        beforeEach(async () => {
+            const respostaLogin = await request(app)
+                .post('/login')
+                .send({
+                    username: 'Jones',
+                    password: '123456'
+                });
+            token = respostaLogin.body.token;
+        });
+
+        it('Retornar o código 400 quando o remetente e destinatário são inexistentes', async ()=> {
+
             const resposta = await request('http://localhost:3000')
                 .post('/transfer')
+                .set('Authorization', `Bearer ${token}`)
                 .send({
-                    remetente: "Marcos",
-                    destinatario: "Jones",
+                    remetente: 'Jones',
+                    destinatario: 'Carlos',
                     valor: 1000
                 });
-
+            
             expect(resposta.status).to.equal(400);
             expect(resposta.body).to.have.property('error','Usuário não encontrado')
         });
+    
+        it('Retornar o código 201 quando os valores informados são válidos', async() => {
+            const resposta = await request('http://localhost:3000')
+                .post('/transfer')
+                .set('Authorization', `Bearer ${token}`)
+                .send({
+                    remetente: "Jones",
+                    destinatario: "Silva",
+                    valor: 100
+                })
+
+            expect(resposta.status).to.equal(201);
+
+            const respostaEsperada = require('../fixture/respostas/retornarCodigo201QuandoOsValoresInformadosSaoValidos.json');
+            delete resposta.body.data;
+            delete respostaEsperada.data;
+            expect(resposta.body).to.deep.equal(respostaEsperada);
+
+        })
     });
 });

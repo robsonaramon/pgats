@@ -5,6 +5,18 @@
     "version": "1.0.0",
     "description": "API para registro, login, consulta de usuários e transferências."
   },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    { "bearerAuth": [] }
+  ],
   "paths": {
     "/register": {
       "post": {
@@ -97,6 +109,7 @@
     "/transfer": {
       "post": {
         "summary": "Realizar transferência",
+        "security": [ { "bearerAuth": [] } ],
         "requestBody": {
           "required": true,
           "content": {
@@ -115,15 +128,20 @@
         },
         "responses": {
           "201": { "description": "Transferência realizada" },
-          "400": { "description": "Erro na transferência" }
+          "400": { "description": "Erro na transferência" },
+          "401": { "description": "Token não fornecido" },
+          "403": { "description": "Token inválido" }
         }
       }
     },
     "/transfers": {
       "get": {
         "summary": "Listar transferências",
+        "security": [ { "bearerAuth": [] } ],
         "responses": {
-          "200": { "description": "Lista de transferências" }
+          "200": { "description": "Lista de transferências" },
+          "401": { "description": "Token não fornecido" },
+          "403": { "description": "Token inválido" }
         }
       }
     }

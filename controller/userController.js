@@ -26,6 +26,10 @@ const login = (req, res) => {
   res.json({ username: user.username });
 };
 
+function loginUser(username, password) {
+  return userService.authenticateUser(username, password);
+}
+
 const list = (req, res) => {
   res.json(userService.listUsers());
 };
@@ -44,6 +48,7 @@ const addFavorecido = (req, res) => {
 module.exports = {
   register,
   login,
+  loginUser,
   list,
   addFavorecido
 };
