@@ -1,0 +1,9 @@
+{
+    "query": "mutation Mutation($input: LoginInput!) {login(input: $input) {token}}",
+    "variables":{
+        "input": {
+            "username": "Jones",
+            "password": "123456"
+        }
+    }
+}

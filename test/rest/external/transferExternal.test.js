@@ -1,8 +1,8 @@
 const request = require('supertest');
 const {expect} = require('chai');
 
-const app = require('../../app');
-const transferService = require('../../service/transferService');
+const app = require('../../../app');
+const transferService = require('../../../service/transferService');
 
 describe('Transfer Controller', ()=> {
     describe('POST /transfer', ()=> {
