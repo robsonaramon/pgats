@@ -1,0 +1,10 @@
+{                
+    "query":"mutation Transfer($input: TransferInput!) { transfer(input: $input) { remetente destinatario valor data }}",
+    "variables":{
+        "input": {
+            "remetente": "Jones",
+            "destinatario": "Silva",
+            "valor": 100
+        }
+    }
+}
