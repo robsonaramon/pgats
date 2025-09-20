@@ -3,6 +3,7 @@ const {expect} = require('chai');
 
 const app = require('../../../app');
 const transferService = require('../../../service/transferService');
+require('dotenv').config()
 
 describe('Transfer Controller', ()=> {
     describe('POST /transfer', ()=> {
@@ -19,7 +20,7 @@ describe('Transfer Controller', ()=> {
 
         it('Retornar o código 400 quando o remetente e destinatário são inexistentes', async ()=> {
 
-            const resposta = await request('http://localhost:3000')
+            const resposta = await request(process.env.BASE_URL_REST)
                 .post('/transfer')
                 .set('Authorization', `Bearer ${token}`)
                 .send({
@@ -33,7 +34,7 @@ describe('Transfer Controller', ()=> {
         });
     
         it('Retornar o código 201 quando os valores informados são válidos', async() => {
-            const resposta = await request('http://localhost:3000')
+            const resposta = await request(process.env.BASE_URL_REST)
                 .post('/transfer')
                 .set('Authorization', `Bearer ${token}`)
                 .send({
