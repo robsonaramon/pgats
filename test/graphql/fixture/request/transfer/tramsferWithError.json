@@ -1,0 +1,44 @@
+[
+    {
+        "nomeTeste": "saldo insuficiente",
+        "transfer": {                
+            "query":"mutation Transfer($input: TransferInput!) { transfer(input: $input) { remetente destinatario valor data }}",
+            "variables":{
+                "input": {
+                    "remetente": "Jones",
+                    "destinatario": "Silva",
+                    "valor": 10000
+                }
+            }
+        },
+        "mensagemEsperada": "Saldo insuficiente"
+    },
+    {
+        "nomeTeste": "remetente não encontrado",
+        "transfer": {                
+            "query":"mutation Transfer($input: TransferInput!) { transfer(input: $input) { remetente destinatario valor data }}",
+            "variables":{
+                "input": {
+                    "remetente": "Cláudio",
+                    "destinatario": "Silva",
+                    "valor": 10000
+                }
+            }
+        },
+        "mensagemEsperada": "Usuário não encontrado"
+    },
+    {
+        "nomeTeste": "destinatário não encontrado",
+        "transfer": {                
+            "query":"mutation Transfer($input: TransferInput!) { transfer(input: $input) { remetente destinatario valor data }}",
+            "variables":{
+                "input": {
+                    "remetente": "Jones",
+                    "destinatario": "Cláudio",
+                    "valor": 10000
+                }
+            }
+        },
+        "mensagemEsperada": "Usuário não encontrado"
+    }
+]
