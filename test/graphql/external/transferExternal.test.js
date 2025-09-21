@@ -33,7 +33,7 @@ describe('Teste de transferência', () => {
         expect(respostaTransferencia.body.data.transfer).excluding('data').to.eql(respostaEsperada.data.transfer);
     });
 
-    const testeDeErrosDeNegocio = require('../fixture/request/transfer/tramsferWithError.json')
+    const testeDeErrosDeNegocio = require('../fixture/request/transfer/transferWithError.json')
     testeDeErrosDeNegocio.forEach(teste=> {
         it(`Validar a tranferência com ${teste.nomeTeste}`, async ()=> {
             const respostaTransferencia = await request(process.env.BASE_URL_GRAPHQL)

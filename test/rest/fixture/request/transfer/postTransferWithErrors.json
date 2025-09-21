@@ -1,0 +1,32 @@
+[
+    {
+        "nomeTeste": "400 quando o saldo é insuficiente",
+        "postTransfer": {                
+            "remetente": "Jones",
+            "destinatario": "Silva",
+            "valor": 11000
+            },
+        "statusCode": 400,
+        "mensagemEsperada": "Saldo insuficiente"
+    },
+    {
+        "nomeTeste": "400 quando o remetente não foi encontrado",
+        "postTransfer": {                
+            "remetente": "Cláudio",
+            "destinatario": "Silva",
+            "valor": 100
+            },
+        "statusCode": 400,
+        "mensagemEsperada": "Usuário não encontrado"
+    },
+    {
+        "nomeTeste": "400 quando o destinatario não foi encontrado",
+        "postTransfer": {                
+            "remetente": "Jones",
+            "destinatario": "Cláudio",
+            "valor": 100
+            },
+        "statusCode": 400,
+        "mensagemEsperada": "Usuário não encontrado"
+    }
+]
