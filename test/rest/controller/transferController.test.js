@@ -73,7 +73,7 @@ describe('Transfer Controller', () => {
 
             expect(resposta.status).to.equal(201);
 
-            const respostaEsperada = require('../fixture/respostas/retornarCodigo201QuandoOsValoresInformadosSaoValidos.json');
+            const respostaEsperada = require('../fixture/response/retornarCodigo201QuandoOsValoresInformadosSaoValidos.json');
             delete resposta.body.data;
             delete respostaEsperada.data;
             expect(resposta.body).to.deep.equal(respostaEsperada);
